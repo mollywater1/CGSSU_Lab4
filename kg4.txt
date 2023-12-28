@@ -1,0 +1,45 @@
+1.
+g->DrawRectangle(rectPen, ClientRectangle.Width - 100, ClientRectangle.Height - 100, 100, 100);
+
+2.
+mat3 T1 = translate(0, 0);
+float S = aspectFig < aspectRect ? Wy / Vy : Wx / Vx;
+mat3 S1 = scale(S / 2, - S / 2);
+mat3 T2 = translate(left + Wx / 2, top + Wy);
+
+3.
+initT = translate(Tx, Ty)
+initT = scale(S, -S)
+
+8-9.
+int bin, n;
+cin >> bin >> n;
+if (bin & int(pow(2, n)))
+// где n - номер нужного разряда. n >= 0, n - целое
+{
+	cout << "в данном разряде 1";
+} else 
+{
+	cout << "в данном разряде 0";
+}
+
+11.
+float theta; // угол поворота в градусах
+s >> theta; // считываем параметр 
+M = rotate(-theta / 180.f * Math::PI) * M; // добавляем поворот к общему преобразованию
+
+12.
+else if (cmd == "model") // начало описания нового рисунка
+{
+	float mVcx, mVcy, mVx, mVy; // параметры команды model
+	s >> mVcx >> mVcy >> mVx >> mVy; // считываем значения переменных
+	float S = mVx / mVy < 1 ? 2.f / mVy : 2.f / mVx;
+	// сдвиг точки привязки из начала координат в нужную позицию, после которого проводим масштабирование
+	initM = scale(S) * translate(-mVcx, -mVcy);
+	figure.clear();
+}
+
+19.
+initM = scale(2.f / mVx , 3.f / mVy) * translate(-mVcx, -mVcy);
+Параметры mVx и mVy - размеры рисунка по горизонтали и вертикали в локальных единицах измерения; 
+mVcx и mVcy - координаты точки привязки (центра рисунка) в объектной системе координат;
